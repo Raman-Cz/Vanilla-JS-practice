@@ -1,0 +1,44 @@
+html{
+    font-size: 10px;
+    background: url("drum\ kit.jpg") bottom center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+body,html{
+    margin:0;
+    padding:0;
+    font-family:cursive;
+}
+.keys{
+    display: flex;
+    flex:1;
+    min-height: 100vh;
+    align-items:center;
+    justify-content: center;
+}
+
+.key{
+    display:block;
+    background-color:white;
+    color:black;
+    margin:10px;
+    padding:5px;
+    border-radius: 5px;
+    width:10rem;
+    transition: all 0.1s ease;
+    text-align: center;
+}
+.playing{
+    transform: scale(1.1);
+    border-color:white;
+    box-shadow: 0 0 2rem white;
+}
+kbd{
+    display:block;
+    font-size: 30px;
+}
+.sound{
+    text-align:center;
+    text-transform: uppercase;
+    letter-spacing:0.1rem;
+}

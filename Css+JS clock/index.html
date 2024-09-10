@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS + JS clock</title>
+</head>
+<body>
+    <div class="clock">
+        <div class="clock-face">
+            <div class="hand hour-hand"></div>
+            <div class="hand minute-hand"></div>
+            <div class="hand second-hand"></div>
+        </div>
+    </div>
+<style>
+    html{
+        background-color:black;
+    }
+    .clock{
+        height:200px;
+        width:200px;
+        border-radius: 50%;
+        border: 15px solid white;
+        margin: 50px auto;
+        position: relative;
+    }
+    .clock-face{
+        position:relative;
+        height:100%;
+        width:100%;
+        border-radius:50%;
+        margin: auto;
+    }
+    .hand{
+        background-color:red;
+        width:50%;
+        height:4px;
+        position:absolute;
+        top:50%;
+        border-radius:20px;
+        transform-origin:100%;
+        transform:rotate(90deg);
+        transition: all 0.05s;
+        transition-timing-function: cubic-bezier(0.1,2.7.0.58,1);
+    }
+    .second-hand{
+        height:2px;
+    }
+    .minute-hand{
+        height:4px;
+    }
+    .hour-hand{
+        height:6px;
+    }
+</style>
+
+<script>
+    const secHand = document.querySelector('.second-hand');
+    const minHand = document.querySelector('.minute-hand');
+    const hrHand = document.querySelector('.hour-hand');
+
+    let prevSec = 0;
+    function setDate(){
+        const now = new Date();
+
+        // seconds
+        const seconds = now.getSeconds();
+        const secD = seconds*6;
+
+        // for smooth transition
+        if(seconds==0){
+            secHand.style.transition = 'none';
+        }
+        else if(prevSec === 59){
+            secHand.style.transition = '';
+        }
+        secHand.style.transform = `rotate(${secD +90 }deg)`;
+        prevSec = seconds;
+        // minutes
+        const mins = now.getMinutes();
+        const minD = mins*6 + (seconds/60)*6;
+        minHand.style.transform = `rotate(${minD+90}deg)`;
+
+        //hrs
+        const hrs = now.getHours();
+        const hrD = hrs*30 + (mins/60)*30;
+        hrHand.style.transform = `rotate(${hrD+90}deg)`;
+    }
+
+    setInterval(setDate, 1000);
+
+</script>
+
+</body>
+</html>

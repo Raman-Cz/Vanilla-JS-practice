@@ -1,0 +1,46 @@
+html{
+    margin:0;
+    font-size: 20px;
+    font-family:cursive;
+    background: linear-gradient(#DAE2F8,#D6A4A4);
+}
+
+body{
+    border:2px solid white;
+    width:400px;
+    margin:40px auto;
+    background:white;
+    border-radius: 10px;
+    box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+}
+
+h2{
+    text-align:center;
+    margin:0;
+}
+input{
+    transform:scale(1.5);
+}
+p{
+    margin-left: 10px;
+}
+
+input:checked + p {
+    text-decoration: line-through;
+  }
+input[type="checkbox"]:focus {
+    outline: none;
+  }
+
+.item{
+    display:flex;
+    padding: 0 10px;
+    border-top: 1px solid;
+    margin-bottom:2;
+}
+.item:nth-child(odd){
+    background-color: aliceblue;
+}
+.item:nth-child(even){
+    background-color: antiquewhite;
+}

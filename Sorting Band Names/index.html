@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sort Without Articles</title>
+</head>
+<body>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: url("https://gradient.page/_next/image?url=%2Fcdn%2Fgreen-glory%2Fgreen-glory-003.jpg&w=1920&q=75");
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    #bands {
+      list-style: inside square;
+      font-size: 10px;
+      background: white;
+      width: 200px;
+      margin: auto;
+      padding: 0;
+      box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.05);
+      border-radius:5px;
+    }
+
+    #bands li {
+      border-bottom: 1px solid #efefef;
+      padding: 5px;
+    }
+
+    #bands li:last-child {
+      border-bottom: 0;
+    }
+
+    a {
+      color: #ffc600;
+      text-decoration: none;
+    }
+
+  </style>
+
+  <ul id="bands"></ul>
+
+<script>
+const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+const list = document.querySelector('#bands');
+const newbands = [];
+
+/*for(let i=0;i<bands.length;i++){
+    let str = bands[i];
+    if(str.slice(0,2)==="A "){
+        newbands.push({idx:i,band:str.slice(2)});
+    }
+    else if(str.slice(0,3)==="An "){
+        newbands.push({idx:i,band:str.slice(3)});
+    }
+    else if(str.slice(0,4)==="The "){
+        newbands.push({idx:i,band:str.slice(4)});
+    }
+    else{
+        newbands.push({idx:i,band:str});
+    }
+}
+newbands.sort((a,b)=>{
+    return a.band.localeCompare(b.band);
+});
+
+for(let i=0;i<bands.length;i++){
+    list.innerHTML+=`<li>${bands[newbands[i].idx]}</li>`;
+}*/
+function strip(band){
+    return band.replace(/^(a |the |an )/i, '').trim();
+}
+const sortedBands = bands.sort((a,b)=> {
+    if(strip(a) > strip(b)) return 1;
+    else return -1;
+});
+list.innerHTML = sortedBands.map(band => `<li>${band}</li>`).join('');
+console.table(sortedBands);
+</script>
+
+</body>
+</html>
